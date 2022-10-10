@@ -1,0 +1,112 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container-fluid bg-light text-dark shadow rounded p-1">
+    <div class="container bg-light p-5">
+        <h1 class="display-4"><i class="bi bi-compass"></i> Contoso Eco Resort</h1>
+        <img class="img-fluid mt-5" src="images/banner.jpg" />
+        <h2 class="display-6 mt-2">Breathe the fresh air, welcome to our paradise.</h2>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-4">
+        <div class="card shadow rounded">
+            <div class="card-header">
+                <h3><i class="bi bi-tsunami"></i> Fishing</h3>
+            </div>
+            <div class="card-body">
+                <img height="250" src="images/fishing.png" />
+            </div>
+            <div class="card-footer">
+                <h5>Exciting river fishing</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow rounded">
+            <div class="card-header">
+                <h3><i class="bi bi-binoculars"></i> Hiking</h3>
+            </div>
+            <div class="card-body">
+                <img height="250" src="images/hiking.jpg" />
+            </div>
+            <div class="card-footer">
+                <h5>Hiking trails in the forest</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow rounded">
+            <div class="card-header">
+                <h3><i class="bi bi-bicycle"></i> Biking</h3>
+            </div>
+            <div class="card-body">
+                <img height="250" src="images/biking.jpg" />
+            </div>
+            <div class="card-footer">
+                <h5>Biking down the trails</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-info mt-5 mb-5 p-5">
+    <h4><i class="bi bi-gift"></i> Free biking when you book a room</h4>
+    <p>When you book a room, you will be able to rent a bike for free with our partner company Contoso Bike Rentals.</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-6">
+        <div class="card shadow rounded">
+            <div class="card-header">
+                <h3><i class="bi bi-house-door"></i> Spacious rooms</h3>
+            </div>
+            <div class="card-body">
+                <img class="img-fluid" src="images/room.jpg" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow rounded">
+            <div class="card-header bg-success text-light">
+                <h3>Book your room now</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Occupancy : 2 adults , 2 childern</li>
+                    <li>1 King size bed, 1 queen size bed</li>
+                    <li>Kitchen and bathroom</li>
+                    <li>Get free biking when you book a room</li>
+                </ul>
+                <div class="row mt-5">
+                    <div class="col-lg-6">
+                        <h5><span class="badge bg-warning text-dark">$TT 1,500 / 2 days</span></h5>
+                        @if (string.IsNullOrEmpty(User?.Identity?.Name))
+                        {
+                            <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn" class="btn btn-secondary">Sign in to book</a>
+                        }
+                        else
+                        {
+                            <p><a href="https://rcl-payment-dev.azurewebsites.net/Payment/CheckoutSession/Create?SellerUserName=rayconsulting@shopeneur.com&PriceIds=price_1LkdyNDjUNypE5Rtnwygayag:1&UserId=@Model?.UserId" class="btn btn-lg btn-success">Book Now <i class="bi bi-calendar-week"></i></a></p>
+                        }
+                    </div>
+                    <div class="col-lg-6">
+                        <h5><span class="badge bg-warning text-dark">$US 220 / 2 days</span></h5>
+                        @if (string.IsNullOrEmpty(User?.Identity?.Name))
+                        {
+                            <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn" class="btn btn-secondary">Sign in to book</a>
+                        }
+                        else
+                        {
+                            <p><a href="https://rcl-payment-dev.azurewebsites.net/Payment/CheckoutSession/Create?SellerUserName=rayconsulting@shopeneur.com&PriceIds=price_1Lkg8SDjUNypE5Rtak6ezo0P:1&UserId=@Model?.UserId" class="btn btn-lg btn-success">Book Now <i class="bi bi-calendar-week"></i></a></p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

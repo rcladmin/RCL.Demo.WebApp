@@ -1,0 +1,70 @@
+﻿@page
+@model RCL.Demo.WebApp.Pages.Booking.IndexModel
+@{
+    ViewData["Title"] = "My bookings";
+}
+
+<div class="card shadow rounded mt-2 mb-5">
+    <div class="card-header"><h3>@ViewData["Title"]</h3></div>
+    <div class="card-body">
+        @if (Model?.Bookings?.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Begin Date</th>
+                        <th>End Date</th>
+                        <th>Room Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Bookings)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.BeginDate.ToLongDateString()</td>
+                            <td>@item.EndDate.ToLongDateString()</td>
+                            <td>@item.RoomNumber</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>
+                You do not have any bookings yet.
+                If your recently made a booking, wait a few minutes and refresh this page.
+            </p>
+        }
+    </div>
+</div>
+
+<div class="card shadow rounded mb-3">
+    <div class="card-header">
+        <h3>Your verified identification</h3>
+    </div>
+    <div class="card-body">
+        <div><strong>First Name</strong></div>
+        <div>@Model?.UserClaimsData?.GivenName</div>
+        <div><strong>Last Name</strong></div>
+        <div>@Model?.UserClaimsData?.SurName</div>
+        <div><strong>Display Name</strong></div>
+        <div>@Model?.UserClaimsData?.DisplayName</div>
+        <div><strong>Email</strong></div>
+        <div>@Model?.UserClaimsData?.Email</div>
+        <div><strong>Address</strong></div>
+        <div>@Model?.UserClaimsData?.StreetAddress</div>
+        <div><strong>City</strong></div>
+        <div>@Model?.UserClaimsData?.City</div>
+        <div><strong>State/Province</strong></div>
+        <div>@Model?.UserClaimsData?.State</div>
+        <div><strong>Postal Code</strong></div>
+        <div>@Model?.UserClaimsData?.PostalCode</div>
+        <div><strong>Country</strong></div>
+        <div>@Model?.UserClaimsData?.Country</div>
+        <div><strong>User ID</strong></div>
+        <div>@Model?.UserClaimsData?.ObjectId</div>
+    </div>
+</div>
