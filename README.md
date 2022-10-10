@@ -1,5 +1,5 @@
 # Contoso Eco Resort Sample Web Application
-This sample web application was built with the RCL cloud Platform Core Components.
+This sample web application was built with the RCL Cloud Platform Core Components.
 
 ## Contribute to this project
 
