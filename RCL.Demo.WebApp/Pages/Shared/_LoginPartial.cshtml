@@ -1,17 +1,27 @@
 ﻿@using System.Security.Principal
 
 <ul class="navbar-nav">
-@if (User.Identity?.IsAuthenticated == true)
-{
-        <span class="navbar-text text-dark">Hello @User.Identity?.Name!</span>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><span class="nav-text text-dark"><i class="bi bi-person-circle"></i> @User.Identity?.Name</span></a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://rcl-demo-identity-enrollment.azurewebsites.net/Account/Profile" target="_blank"><i class="bi bi-card-list"></i> Edit Profile</a>
+                <a class="dropdown-item" href="https://rcl-demo-identity-enrollment.azurewebsites.net/Account/Password" target="_blank"><i class="bi bi-key"></i> Change Password</a>
+                <a class="dropdown-item" href="https://rcl-demo-identity-enrollment.azurewebsites.net/Account/SecurityGroup" target="_blank"><i class="bi bi-people"></i> Security Group</a>
+                <hr>
+                <a class="dropdown-item" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut"><i class="bi bi-box-arrow-left"></i> Sign out</a>
+            </div>
         </li>
-}
-else
-{
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    }
+    else
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><span class="nav-text text-dark"><i class="bi bi-person-circle"></i> Login</span></a>
+            <div class="dropdown-menu">
+            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn"><i class="bi bi-box-arrow-right"></i> Sign in</a>
+                <a class="nav-link text-dark" href="https://rcl-demo-identity-enrollment.azurewebsites.net" target="_blank"><i class="bi bi-pencil-square"></i> Register</a>
+            </div>
         </li>
-}
+    }
 </ul>
